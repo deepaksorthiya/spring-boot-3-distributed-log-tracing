@@ -9,7 +9,7 @@ services:
             - ./tempo-data:/tmp/tempo
         ports:
             - "14268"  # jaeger ingest
-            - "9411:9411" # zipkin
+            - "9411" # zipkin
 
     loki:
         image: grafana/loki
@@ -33,7 +33,14 @@ services:
             - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
         ports:
             - "9090:9090"
-
+    zipkin:
+        image: openzipkin/zipkin
+        container_name: zipkin-server
+        ports:
+            # Port used for the Zipkin UI and HTTP Api
+            - 9411:9411
+            # Uncomment if you set SCRIBE_ENABLED=true
+            # - 9410:9410
     grafana:
         image: grafana/grafana
         extra_hosts: ['host.docker.internal:host-gateway']
