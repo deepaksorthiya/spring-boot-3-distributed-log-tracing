@@ -53,6 +53,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.prometheus</groupId>
+			<artifactId>simpleclient_pushgateway</artifactId>
+		</dependency>
+
 		<!-- For pushing logs out -->
 		<dependency>
 			<groupId>com.github.loki4j</groupId>
